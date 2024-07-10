@@ -295,3 +295,38 @@ function handleImageChange(e) {
   - 그러나 파일 경로에 layout을 추가하면 모든 중첩된 페이지를 검사하게 됨.
 
 ---
+
+### Metadata
+
+- Next.js는 모든 page 혹은 layout에 Metadata field를 찾는다.
+- 검색 엔진 크롤러에 노출될 수 있는 내용들을 저장한다.
+- `metadata` 변수 사용
+
+```jsx
+export const metadata = {
+  title: "page-title",
+  description:
+    "the description about this page. you can write whatever you want",
+};
+```
+
+- 동적 페이지에 추가하기
+- `generateMetadata()`사용
+- 인수로 전달되는 객체의 params는 동적 페이지의 params 객체와 동일한 값을 전달 받는다.
+
+```jsx
+export default function generateMetadata({ params }) {
+  const id = params.id;
+  // 유효하지 않은 페이지 접근 시, params 객체를 사용하며 error가 발생할 수 있으므로 early return으로 미리 처리해준다.
+  if(!id){
+    notFount();
+  }
+
+  return {
+    title: `detailPage${id}`
+    description: `A description about item${id}`
+  }
+}
+```
+
+---
