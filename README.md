@@ -1,6 +1,12 @@
-### next.js 복습입니다.
+## next.js 복습입니다.
 
-- app router 기반
+### 심화
+
+- [Routing & Rendering](./pages/Router&Rendering.md)
+
+---
+
+- app router 기본
 
 ---
 
