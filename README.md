@@ -3,6 +3,7 @@
 ### 심화
 
 - [Routing & Rendering](./pages/Router&Rendering.md)
+- [Data-fetching](./pages/Data-feching.md)
 
 ---
 
