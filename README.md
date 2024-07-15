@@ -4,6 +4,7 @@
 
 - [Routing & Rendering](./pages/Router&Rendering.md)
 - [Data-fetching](./pages/Data-feching.md)
+- [Cache](./pages/Cache.md)
 
 ---
 
