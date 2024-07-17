@@ -6,6 +6,7 @@
 - [Data-fetching](./pages/Data-feching.md)
 - [Cache](./pages/Cache.md)
 - [Optimizations](./pages/Optimizations.md)
+- [User-Authentication](./pages/User-Authentication.md)
 
 ---
 
