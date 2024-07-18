@@ -109,7 +109,7 @@ const path = usePathname();
 - page.js와 비슷하게 폴더 위치에 따라 범위가 달라짐.
 - 참고
   - Next.js에서는 들어간 모든 페이지들을 캐싱함.
-  - 페이지를 새로고침하거나 재접속할때를 재외하고는 바로 load된다.
+  - 페이지를 새로고침하거나 재접속할때를 제외하고는 바로 load된다.
 
 ---
 
@@ -190,6 +190,7 @@ export default function Form() {
           id="image"
           accept="image/png, image/jpeg"
           name="image"
+          className={{ visibility: "hidden" }}
           ref={imageInputRef}
         />
         <button onClick={handlePickClick}>추가<button>
@@ -290,7 +291,7 @@ function handleImageChange(e) {
 
 ### Next.js Cache
 
-- Next.js는 굉장히 공격저으로 캐싱한다.
+- Next.js는 굉장히 공격적으로 캐싱한다.
 - Next.js는 build 단계에서 가능한 한 많은 페이지를 정적 페이지로 생성한다.
 
   - 굉장히 빠른 로딩 속도를 볼 수 있다.
