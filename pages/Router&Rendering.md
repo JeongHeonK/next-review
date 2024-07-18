@@ -36,7 +36,7 @@ export default function archiveLayout({ archive, latest }) {
 ### 병렬 라우트에서의 중첩 라우트
 
 - default.js를 사용해야 한다.
-- 만약 archive페이지에서 자신의 중첩 라우트인 `/archive/someurl`로 이동한다면, latest에서 보여줄게 없어진다.
+- 만약 archive페이지에서 자신의 중첩 라우트인 `/archive/someUrl`로 이동한다면, latest에서 보여줄게 없어진다.
 - 이때 `default.js`를 통해 병렬 처리된 라우트가 이동할 때 보여줄 기본값을 설정한다. 병렬 라우팅 폴더 안에 만들어야 함 -> `@latest - default.js`
 
 ---
@@ -93,16 +93,17 @@ export default parallelPageDefault() {
 
 - `(폴더명)` 작성
 - path에 안 뜸.
-- 이를 통해 각각의 layout.ts페이지 생성가능
+- 이를 통해 각각의 `layout.ts`페이지 생성가능
 - 외에도 목적에 따라 파일들 분류 가능
 
 ---
 
 ### Route handler
 
-- `api`폴더 생성.
-- 함수 이름은 `GET, POST, PATCH, DELETE`로 만듬.
-- 보통 JSON 데이터를 반환하거나 수신되는 json데이터를 수집하고 반환함.
+- next.13 버전 이후 생성된 기능
+- 기존의 api 처리 시, `pages/api`에서 `handler`함수가 모든 요청을 처리하였으나, 이제는 함수 이름을 http method로 설정하여 각 요청 방법에 대해서 각각의 함수로 처리할 수 있다.
+- `api`폴더 내에 `route.ts`생성. 같은 경로에 page.tsx가 있을 수 없다. [Next.js Doc참조]("https://nextjs.org/docs/app/building-your-application/routing/route-handlers")
+- 함수 이름은 `HTTP METHOD`(`GET`, `POST`, `PATCH`, `DELETE`)로 만듬.
 - 기본 구조
 
 ```jsx
@@ -113,11 +114,16 @@ export function GET(request) {
 }
 ```
 
+- Next.js로 만든 애플리케이션을 요청을 보내는 모바일 앱으로 만들 때 사용.
+
 ---
 
 ### middleware
 
-- 루트 경로에 `middleware.js` 생성
+- 루트 경로에 `middleware.ts` 생성
+- NextResponse return
+- 모든 요청을 검토해서 요청 정보에 따라 다른 응답을 하기 위해 사용.
+- 인증 구현시 사용.(로그인 정보 없을 시, 경로 전환 `NextResponse.redirect()`)
 
 ```jsx
 import { NextResponse } from "next/server";
@@ -138,6 +144,7 @@ export function middleware(request) {
   return NextResponse.next();
 }
 
+// 경로 필터링 가능
 export const config = {
   matcher: "/news",
 };

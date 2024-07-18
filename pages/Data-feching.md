@@ -19,15 +19,6 @@ export default async function SomeComp() {
 ```
 
 - 서버 컴포넌트는 서버에서만 실행되기 때문에 바로 데이터베이스에 접근하는 코드 실행히도 문제 없음.
-
-```jsx
-export default async function SomeComp() {
-  const data = ;
-
-  return <div>{data}</div>;
-}
-```
-
 - 같은 폴더 경로에 loading.js를 추가하면, loading 처리 가능.
 - 페이지 전체가 아니라 부분적인 로딩 처리를 할때는 `<Suspense>` 사용
 
