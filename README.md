@@ -10,6 +10,12 @@
 
 ---
 
+### page router
+
+- [page router](./pages/page-route/page-router.md)
+
+---
+
 - app router 기본
 
 ---
@@ -46,9 +52,12 @@
 `[]` 를 이용해서 만듬. (폴더 명 혹은 파일명)
 
 - 에시 `@/app/blog/[slug]/page.js`
-- page.js에서 작성한 컴포넌트에서 'params' 사용가능
+- page.js에서 작성한 컴포넌트에서 props로 'params' 사용가능
 - blog/`입력한 값`이 params에 저장된다.
 - params내에 { slug: 'post-1' }이란 값이 저장됨.
+- [searchParams]("https://nextjs.org/docs/app/api-reference/file-conventions/page#searchparams-optional")
+- params와 같이 props내에서 사용가능. query parameter 조회 가능
+- `/shop?a=1&b=2` -> `{ a: '1', b: '2' }`
 
 ---
 

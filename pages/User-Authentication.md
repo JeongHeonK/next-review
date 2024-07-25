@@ -21,4 +21,5 @@
 
 ### [searchParams]("https://nextjs.org/docs/app/api-reference/file-conventions/page#searchparams-optional")
 
+- `/shop?a=1&b=2` -> `{ a: '1', b: '2' }`
 - searchParams를 통해 link buttons 클릭시 로그인/가입 전환 가능
