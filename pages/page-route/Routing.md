@@ -31,3 +31,17 @@ pages folder의 index.tsx가 main page가 된다.
 
 - pages 폴더에 파일을 생성할 경우 Next.js에서 경로로 인식할 가능성이 있다.
 - 그러므로 아예 분리된 폴더에 커스텀 컴포넌트를 생성하는 것이 권장된다.
+
+### `useRouter()`
+
+- app router와 달리 query를 조회할 때 useRouter 사용
+- `router.query`로 조회
+
+```jsx
+import { useRouter } from "next/router";
+
+function someComp() {
+  const router = useRouter();
+  console.log(router.query); // dynamic route id, query parameter 모두 조회가능
+}
+```
