@@ -8,6 +8,7 @@
 ### `getStaticProps()`
 
 - build 타임에 next.js가 prefetching 해야하는 페이지임을 명시.
+- build 타임에 한 번 실행됨.
 
 ```jsx
 export async function getStaticProps() {
@@ -34,6 +35,7 @@ function Home(props) {...생략}
 
 - Incremental Static Generation
 - 특정 시간을 기점으로 새로 생성된 페이지를 제공
+- getStaticProps를 사용하면 build 시 한번 실행되지만, `revalidate` 프로퍼티를 추가하면 설정한 주기마다 재생성됨.
 
 ```jsx
 export async function getStaticProps() {
@@ -78,3 +80,28 @@ export async function getStaticPaths() {
   - getStaticPaths가 return하지 않은 새 path는 SSR과 동일하게 HTML이 생성될 때까지 기다린 다음 이후 요청을 위해 캐시되어 path당 한 번만 발생한다.
   - fallback 컴포넌트를 보여주지 않음.
   - 비교적 생성속도가 빠를때는 blocking을 사용하는 것이 좋음
+
+---
+
+### `getServerSideProps()`
+
+- getStaticProps는 이미 완성된 페이지를 pre-rendering 하는 것.
+- 즉, client 요청에 대해 업데이트 할 수 없다.
+- 이 때 사용함.
+- 매 요청마다 서버에서 샐행되고 새로운 데이터를 가져와 페이지를 생성함.
+
+```jsx
+export const getServerSideProps = (context: GetServerSidePropsContext) => {
+  const { params, req, res } = context;
+
+  return {
+    props: {
+      userName: "Kim",
+    },
+  };
+};
+```
+
+- `getServerSideProps()`는 Paths함수 사용할 필요 없음
+
+---
